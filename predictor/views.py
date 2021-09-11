@@ -2,6 +2,7 @@ import json
 from django.http import JsonResponse
 from rest_framework.views import APIView
 import pandas as pd
+import os
 
 
 class GenerateRating(APIView):
@@ -10,8 +11,8 @@ class GenerateRating(APIView):
 
     def get(self, request):
         username = request.GET["username"]
-        df = pd.read_csv('student_consistency.csv')
-        df = df[df['username']==username]
+        df = pd.read_csv('predictor/student_consistency.csv')
+        df = df[df['name']==username]
         if df.shape[0] == 0:
             response = {"success": False, "message": "Given Username Does not exist", "data": None}
             return JsonResponse(response)
