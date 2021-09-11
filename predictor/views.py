@@ -19,5 +19,5 @@ class GenerateRating(APIView):
 
         data = {"consistency_rating": df['consistency_rating'].values[0], "submission_rating": df['submission_rating'].values[0],
         "overall_rating": df['final_rating'].values[0]}
-        response = {"success": True, "message": "test", "data": data}
+        response = {"success": True, "message": "Got rating successfully", "data": data}
         return JsonResponse(response)
